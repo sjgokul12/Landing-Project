@@ -14,7 +14,7 @@ const BOOKS = [
 ];
 
 const EVENTS = [
-  { id:1, tag:"Book Club", tagColor:"#F5EDD6", tagText:"#B5820A", title:"Book Club: Classic Literature", date:"November 18, 2025", time:"6:00 PM – 8:00 PM",   location:"Reading Room A",  current:12, total:20 },
+  { id:1, tag:"Book club", tagColor:"#F5EDD6", tagText:"#B5820A", title:"Book Club: Classic Literature", date:"November 18, 2025", time:"6:00 PM – 8:00 PM",   location:"Reading Room A",  current:12, total:20 },
   { id:2, tag:"Kids",      tagColor:"#E8F5E8", tagText:"#2E7D32", title:"Children's Story Time",         date:"November 20, 2025", time:"10:00 AM – 11:00 AM", location:"Children's Section", current:8, total:15 },
   { id:3, tag:"Workshop",  tagColor:"#F5EDD6", tagText:"#B5820A", title:"Creative Writing Workshop",     date:"November 22, 2025", time:"2:00 PM – 4:00 PM",   location:"Community Hall",  current:15, total:25 },
 ];
@@ -37,10 +37,9 @@ export default function App() {
 function Navbar({ activePage, setActivePage }) {
   const links = ["Home","Books","Events","About","Contact"];
   return (
-    <nav style={{ background:"#F5F0E8", borderBottom:"1px solid #E8E0D0", padding:"0 40px", height:56, display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+    <nav style={{ background:"#fff", borderBottom:"1px solid #E8E0D0", padding:"0 40px", height:56, display:"flex", alignItems:"center", justifyContent:"space-between" }}>
       <div style={{ display:"flex", alignItems:"center", gap:10 }}>
         <img src="/Logo.png" alt="Logo" style={{ width:32, height:32, borderRadius:8, objectFit:"cover" }} />
-     
         <span style={{ fontWeight:600, fontSize:15, color:"#1a1a1a" }}>Sunshine Library</span>
       </div>
       <div style={{ display:"flex", gap:28 }}>
@@ -54,18 +53,18 @@ function Navbar({ activePage, setActivePage }) {
 
 function Hero({ setActivePage }) {
   return (
-    <div style={{ padding:"32px 40px" }}>
-      <div style={{ position:"relative", borderRadius:16, overflow:"hidden", height:400, backgroundImage:`url('/library.png')`, backgroundSize:"cover", backgroundPosition:"center" }}>
+    <div style={{ padding:"32px 40px", background:"#F5F0E8" }}>
+      <div style={{ position:"relative", borderRadius:16, overflow:"hidden", height:500, backgroundImage:`url('/library.png')`, backgroundSize:"cover", backgroundPosition:"center", backgroundRepeat:"no-repeat", maxWidth:1195, margin:"0 auto" }}>
         <div style={{ position:"absolute", inset:0, background:"rgba(20,15,10,0.55)" }} />
-        <div style={{ position:"relative", padding:"48px 40px", maxWidth:520 }}>
-          <h1 style={{ color:"#fff", fontSize:36, fontWeight:700, margin:"0 0 12px", lineHeight:1.2 }}>Welcome to Sunshine Library</h1>
-          <p style={{ color:"rgba(255,255,255,0.82)", fontSize:15, lineHeight:1.6, margin:"0 0 28px" }}>Your community hub for knowledge, connection, and growth. Explore thousands of books, join engaging events, and be part of our vibrant community.</p>
-          <div style={{ display:"flex", gap:12 }}>
-            <button onClick={() => setActivePage("Books")} style={{ background:"#C96A2A", color:"#fff", border:"none", borderRadius:24, padding:"11px 22px", fontSize:14, fontWeight:600, cursor:"pointer", fontFamily:"inherit", display:"flex", alignItems:"center", gap:8 }}>
-              <img src="/Search.png" alt="search" style={{ width:16, height:16, objectFit:"contain" }} /> Search Books
+        <div style={{ position:"relative", height:"100%", display:"flex", flexDirection:"column", alignItems:"flex-start", justifyContent:"center", textAlign:"left", padding:"48px 56px" }}>
+          <h1 style={{ color:"#fff", fontSize:36, fontWeight:700, margin:"0 0 12px", lineHeight:1.2, maxWidth:520 }}>Welcome to Sunshine Library</h1>
+          <p style={{ color:"rgba(255,255,255,0.82)", fontSize:15, lineHeight:1.6, margin:"0 0 28px", maxWidth:460 }}>Your community hub for knowledge, connection, and growth. Explore thousands of books, join engaging events, and be part of our vibrant community.</p>
+          <div style={{ display:"flex", gap:12, alignItems:"center" }}>
+            <button onClick={() => setActivePage("Books")} style={{ background:"none", border:"none", padding:0, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>
+              <img src="/Search Book.png" alt="search books" style={{ height:44, objectFit:"contain" }} />
             </button>
-            <button onClick={() => setActivePage("Events")} style={{ background:"transparent", color:"#fff", border:"2px solid rgba(255,255,255,0.6)", borderRadius:24, padding:"10px 22px", fontSize:14, fontWeight:600, cursor:"pointer", fontFamily:"inherit" }}>
-              View Events
+            <button onClick={() => setActivePage("Events")} style={{ background:"none", border:"none", padding:0, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center" }}>
+              <img src="/View Event.png" alt="view events" style={{ height:44, objectFit:"contain" }} />
             </button>
           </div>
         </div>
@@ -76,41 +75,65 @@ function Hero({ setActivePage }) {
 
 function QuickAccess() {
   const cards = [
-    { icon: <img src="/Search2.png" alt="search" style={{ width:24, height:24, objectFit:"contain" }} />, title:"Book Search",     desc:"Find your next great read from our extensive collection" },
-    { icon:<img src="/Event.png" alt="event" style={{ width:24, height:24, objectFit:"contain" }} />, title:"Event Booking",   desc:"Join workshops, book clubs, and community activities" },
-    { icon:<img src="/Heart.png" alt="heart" style={{ width:24, height:24, objectFit:"contain" }} />, title:"Volunteer Signup",desc:"Make a difference in your community and help us grow" },
+    { icon: <img src="/Search2.png" alt="search" style={{ width:24, height:24, objectFit:"contain" }} />, title:"Book Search", desc:"Find your next great read from our extensive collection" },
+    { icon: <img src="/Event.png" alt="event" style={{ width:24, height:24, objectFit:"contain" }} />, title:"Event Booking", desc:"Join workshops, book clubs, and community activities" },
+    { icon: <img src="/Heart.png" alt="heart" style={{ width:24, height:24, objectFit:"contain" }} />, title:"Volunteer Signup", desc:"Make a difference in your community and help us grow" },
   ];
   return (
-    <div style={{ padding:"8px 40px 32px", display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:20 }}>
-      {cards.map(c => (
-        <div key={c.title} style={{ background:"#fff", borderRadius:16, padding:28, border:"1px solid #EDE8DE" }}>
-          <div style={{ width:44, height:44, background:"#FFF5ED", borderRadius:12, display:"flex", alignItems:"center", justifyContent:"center", fontSize:20, marginBottom:18 }}>{c.icon}</div>
-          <h3 style={{ margin:"0 0 8px", fontSize:15, fontWeight:600 }}>{c.title}</h3>
-          <p style={{ margin:0, fontSize:13, color:"#777", lineHeight:1.5 }}>{c.desc}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      <style>{`
+        .quick-grid { padding: 8px 40px 32px; display: grid; grid-template-columns: repeat(3, 389.33px); gap: 20px; justify-content: center; }
+        .quick-card { background: #fff; border-radius: 16px; padding: 28px 32px; border: 1px solid #EDE8DE; width: 389.33px; height: 250px; box-sizing: border-box; transition: box-shadow 0.2s, transform 0.2s; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; }
+        .quick-card:hover { box-shadow: 0 8px 28px rgba(196,119,59,0.12); transform: translateY(-3px); }
+        .quick-card p { margin: 0; font-size: 13px; color: #777; line-height: 1.5; max-width: 100%; }
+        @media (max-width: 1280px) {
+          .quick-grid { grid-template-columns: repeat(3, 1fr); padding: 8px 20px 32px; }
+          .quick-card { width: 100%; height: auto; min-height: 250px; }
+        }
+        @media (max-width: 700px) {
+          .quick-grid { grid-template-columns: 1fr; }
+          .quick-card { width: 100%; height: auto; }
+        }
+      `}</style>
+      <div className="quick-grid">
+        {cards.map(c => (
+          <div key={c.title} className="quick-card">
+            <div style={{ width:44, height:44, background:"#FFF5ED", borderRadius:12, display:"flex", alignItems:"center", justifyContent:"center", fontSize:20 }}>{c.icon}</div>
+            <h3 style={{ margin:0, fontSize:15, fontWeight:600 }}>{c.title}</h3>
+            <p>{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 
 function FeaturedBooks() {
   return (
     <div style={{ padding:"8px 40px 40px" }}>
-      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:20 }}>
-        <div>
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:20, paddingLeft:120, paddingRight:40 }}>
+        <div style={{ textAlign:"left" }}>
           <h2 style={{ margin:"0 0 4px", fontSize:20, fontWeight:700 }}>Featured Books</h2>
           <p style={{ margin:0, fontSize:13, color:"#888" }}>Hand-picked selections from our librarians</p>
         </div>
-        <button style={{ background:"#fff", border:"1px solid #DDD", borderRadius:8, padding:"8px 16px", fontSize:13, cursor:"pointer" }}>View All</button>
+        <button style={{ background:"none", border:"none", padding:0, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", marginRight:90 }}>
+          <img src="/View.png" alt="view all" style={{ width:85.59, height:36, objectFit:"contain" }} />
+        </button>
       </div>
-      <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:16 }}>
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(4, 286px)", gap:16, justifyContent:"flex-start", paddingLeft:120 }}>
         {BOOKS.map(b => (
-          <div key={b.id} style={{ background:"#fff", borderRadius:14, overflow:"hidden", border:"1px solid #eee", width:286, height:508.66 }}>
-            <div style={{ position:"relative", width:284, height:378.66, background:"#d4c5b0", overflow:"hidden" }}>
+          <div key={b.id} style={{ background:"#fff", borderRadius:14, overflow:"hidden", border:"1px solid #eee", width:286, height:508.66, boxSizing:"border-box" }}>
+            <div style={{ position:"relative", width:286, height:378.66, background:"#d4c5b0", overflow:"hidden" }}>
               <img src={b.cover} alt={b.title} style={{ width:"100%", height:"100%", objectFit:"cover" }} />
-              <span style={{ position:"absolute", top:10, right:10, background: b.available ? "#C96A2A" : "#EDE4D3", color:"#fff", fontSize:11, padding:"3px 8px", borderRadius:20 }}>
-                {b.available ? "Available" : "On Loan"}
-              </span>
+              {b.available ? (
+                <span style={{ position:"absolute", top:10, right:10, background:"#C96A2A", color:"#fff", fontSize:11, padding:"3px 8px", borderRadius:20 }}>
+                  Available
+                </span>
+              ) : (
+                <span style={{ position:"absolute", top:10, right:10, background:"#EDE4D3", color:"#8B6914", fontSize:11, padding:"3px 8px", borderRadius:20 }}>
+                  On Loan
+                </span>
+              )}
             </div>
             <div style={{ padding:"14px 16px" }}>
               <p style={{ margin:"0 0 4px", fontSize:11, color:"#888" }}>{b.genre}</p>
@@ -126,28 +149,40 @@ function FeaturedBooks() {
 
 function UpcomingEvents() {
   return (
-    <div style={{ padding:"8px 40px 48px" }}>
-      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:20 }}>
+    <div style={{ padding:"8px 40px 48px", width:1216, boxSizing:"border-box", margin:"0 auto" }}>
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:20, paddingLeft:0, paddingRight:0, marginLeft:-20 }}>
         <div>
           <h2 style={{ margin:"0 0 4px", fontSize:20, fontWeight:700 }}>Upcoming Events</h2>
           <p style={{ margin:0, fontSize:13, color:"#888" }}>Join our community activities and workshops</p>
         </div>
-        <button style={{ background:"#fff", border:"1px solid #DDD", borderRadius:8, padding:"8px 16px", fontSize:13, cursor:"pointer", fontFamily:"inherit", color:"#444" }}>View Calendar</button>
+        <button style={{ background:"none", border:"none", padding:0, cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", marginRight:-35 }}>
+          <img src="/View Calendar.png" alt="view calendar" style={{ width:124.58, height:36, objectFit:"contain" }} />
+        </button>
       </div>
-      <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:20 }}>
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(3, 389.33px)", gap:20, justifyContent:"center" }}>
         {EVENTS.map(e => (
-          <div key={e.id} style={{ background:"#fff", borderRadius:14, padding:24, border:"1px solid #EDE8DE", display:"flex", flexDirection:"column", gap:12 }}>
-            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
-              <span style={{ background:e.tagColor, color:e.tagText, fontSize:11, fontWeight:600, padding:"4px 10px", borderRadius:12 }}>{e.tag}</span>
-              <span><img src="/Men.png" alt="men" style={{ width:14, height:14, objectFit:"contain", verticalAlign:"middle" }} /> {e.current}/{e.total}</span>
+          <div key={e.id} style={{ background:"#fff", borderRadius:14, padding:24, border:"1px solid #EDE8DE", display:"flex", flexDirection:"column", width:389.33, height:336, boxSizing:"border-box" }}>
+            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:16 }}>
+              <img src={`/${e.tag}.png`} alt={e.tag} style={{ height:24, objectFit:"contain" }} />
+              <span style={{ fontSize:12, color:"#888", display:"flex", alignItems:"center", gap:4 }}>
+                <img src="/Men.png" alt="men" style={{ width:14, height:14, objectFit:"contain", verticalAlign:"middle" }} /> {e.current}/{e.total}
+              </span>
             </div>
-            <h3 style={{ margin:0, fontSize:15, fontWeight:700, lineHeight:1.3 }}>{e.title}</h3>
-            <div style={{ display:"flex", flexDirection:"column", gap:6, color:"#666", fontSize:13 }}>
-              <span><img src="/Date.png" alt="date" style={{ width:14, height:14, objectFit:"contain", verticalAlign:"middle "}} /> {e.date}</span>
-              <span><img src="/Time.png" alt="time" style={{ width:14, height:14, objectFit:"contain", verticalAlign:"middle "}} /> {e.time}</span>
-              <span><img src="/Location.png" alt="location" style={{ width:14, height:14, objectFit:"contain", verticalAlign:"middle "}} />{e.location}</span>
+            <h3 style={{ margin:"0 0 16px", fontSize:15, fontWeight:700, lineHeight:1.3 }}>{e.title}</h3>
+            <div style={{ display:"flex", flexDirection:"column", gap:10, color:"#666", fontSize:13 }}>
+              <span style={{ display:"flex", alignItems:"center", gap:6 }}>
+                <img src="/Date.png" alt="date" style={{ width:14, height:14, objectFit:"contain" }} /> {e.date}
+              </span>
+              <span style={{ display:"flex", alignItems:"center", gap:6 }}>
+                <img src="/Time.png" alt="time" style={{ width:14, height:14, objectFit:"contain" }} /> {e.time}
+              </span>
+              <span style={{ display:"flex", alignItems:"center", gap:6 }}>
+                <img src="/Location.png" alt="location" style={{ width:14, height:14, objectFit:"contain" }} /> {e.location}
+              </span>
             </div>
-            <button style={{ marginTop:4, background:"#C96A2A", color:"#fff", border:"none", borderRadius:8, padding:"11px", fontSize:13, fontWeight:600, cursor:"pointer", fontFamily:"inherit", width:"100%" }}>View Details</button>
+            <button style={{ marginTop:"auto", background:"none", border:"none", padding:0, cursor:"pointer", width:"100%", display:"flex", alignItems:"center", justifyContent:"center" }}>
+              <img src="/Click.png" alt="view details" style={{ width:"100%", height:40, objectFit:"contain" }} />
+            </button>
           </div>
         ))}
       </div>
@@ -171,8 +206,8 @@ function Footer({ setActivePage }) {
               { src:"/Instagram.png", alt:"instagram" },
               { src:"/X.png", alt:"x" }
             ].map(s => (
-              <button key={s.alt} style={{ width:34, height:34, borderRadius:8, background:"rgba(255,255,255,0.1)", border:"none", cursor:"pointer", color:"flex", alignItems:"center", padding:6 }}>
-                <img src={s.src} alt={s.alt} style={{ width:"100%", height:"100%", objectFit:"contain"}} />
+              <button key={s.alt} style={{ width:36, height:36, borderRadius:8, background:"rgba(255,255,255,0.1)", border:"none", cursor:"pointer", display:"flex", alignItems:"center", justifyContent:"center", padding:6 }}>
+                <img src={s.src} alt={s.alt} style={{ width:36, height:36, objectFit:"contain"}} />
               </button>
             ))}
           </div>
